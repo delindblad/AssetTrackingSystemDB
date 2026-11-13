@@ -15,7 +15,12 @@ public class AssetDB : DbContext
     {
 
         string? connectionString = Environment.GetEnvironmentVariable("CONNETION_STRING");
-        // string connectionString =
+        if (connectionString == null)
+        {
+            AnsiConsole.WriteLine("Connection string is null, please check your environment variables.");
+            Environment.Exit(-1);
+        }
+        // string connectionString =    
         //     "Server=tcp:localhost;Database=AssetTest4;User ID=sa;Password=der6TIti6DER;Encrypt=false";
         AnsiConsole.WriteLine($"Connection: {connectionString}");
         optionsBuilder.UseSqlServer(connectionString);
