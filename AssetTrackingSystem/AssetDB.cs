@@ -14,7 +14,7 @@ public class AssetDB : DbContext
         DbContextOptionsBuilder optionsBuilder)
     {
 
-        string? connectionString = Environment.GetEnvironmentVariable("CONNETION_STRING");
+        string? connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING");
         if (connectionString == null)
         {
             AnsiConsole.WriteLine("Connection string is null, please check your environment variables.");
