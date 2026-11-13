@@ -28,5 +28,6 @@ public enum OrederBy
     OfficeLocation,
     Id,
     Brand,
-    WarrantyExpiration
+    WarrantyExpiration,
+    ModelName
 }
