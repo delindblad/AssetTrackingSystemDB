@@ -11,6 +11,12 @@ class Program
     {   
         
         AnsiConsole.MarkupLine("[yellow]Welcome to the Asset Tracker![/]");
+        string? connectionString = Environment.GetEnvironmentVariable("CONNETION_STRING");
+        if (connectionString == null)
+        {
+            AnsiConsole.WriteLine("Connection string is null, please check your environment variables.");
+            Environment.Exit(-1);
+        }
 
         if (args.Length > 1 && args[1] == "init")
         {
