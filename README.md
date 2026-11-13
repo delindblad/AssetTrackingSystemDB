@@ -11,31 +11,64 @@ System for tracking assets in different locations
 - LINQ
 - JSON
 - Free currency API
+- Entity
+- Spectre console: https://spectreconsole.net/
 ## Installation
 Clone the repository:
 
-	git clone https://github.com/delindblad/AssetTrackingSystem.git
+	git clone https://github.com/delindblad/AssetTrackingSystemDB.git
 
+Enter the project sub directory, it you use Windows:
 
-In the project sub directory use "dotnet run", it should build automatically:
-    Change to the project directory(its under the "solution directory":
-    
-    >cd .\AssetTrackingSystem\AssetTrackingSystem\R
-    
-  Run the project directly:
-  
-    >dotnet run AssetTrackingSystem.csproj
+	cd .\AssetTrackingSystemDB\AssetTrackingSystem
+
+On MacOs or other UNIX-like systems:
+
+	cd ./AssetTrackingSystemDB/AssetTrackingSystem 
+
+You need to provide a connection string by setting the CONNECTION_STRING environment variable temporarily. The exact string depends on your particular setup, below is an example
+
+If you use Windows Power Shell:
+
+	setx CONNECTION_STRING "Server=myServerAddress;Database=myDatabase;User Id=myUsername;Password=myPassword;"
+
+on MacOs or other UNIX-like systems, using sh, zsh or bash:
+
+	export CONNECTION_STRING="Server=myServerAddress;Database=myDatabase;User Id=myUsername;Password=myPassword;"
+
+or if you use csh or tcsh:
+
+	setenv CONNECTION_STRING "Server=myServerAddress;Database=myDatabase;User Id=myUsername;Password=myPassword;"
+
+set up migrations:
+
+	dotnet ef migrations add InitialCreate
+	dotnet ef database update
+
+to create sample data run with the "init" parameter:
+
+	dotnet run AssetTrackingSystem.csproj init
+
+the program will exit after the data has been created, you can then run it with the following command:
+
+	dotnet run AssetTrackingSystem.csproj
 		
 
-The resulting executable will be under "\bin\Release\net10.0\".
 
 ## How to run
-Will run automatically as described above, or just run the executable. And follow the instructions.
+Will run automatically as described above, or just run the executable after building it:
+
+	dotnet build AssetTrackingSystem.csproj
+
+the executable will be under:
+
+	./bin/Debug/net10.0/
+	
 
 ## Screenshots
 
-<img width="2299" height="1053" alt="image" src="https://github.com/user-attachments/assets/715d3574-0a7b-48ab-ad7f-1c33b21ff90f" />
-<img width="2041" height="1059" alt="image" src="https://github.com/user-attachments/assets/b6a459f6-3a67-4b5d-a9f1-91e8576edb2d" />
+<img width="858" height="366" alt="image" src="https://github.com/user-attachments/assets/5f990da7-c069-49f5-ae80-0373a61e3685" />
+<img width="852" height="478" alt="image" src="https://github.com/user-attachments/assets/4acb632d-5cf4-437d-b01f-5e51357dbc9e" />
 
 
 
@@ -43,11 +76,9 @@ Will run automatically as described above, or just run the executable. And follo
 ## Team members
 Only me.
 
-## Notes
-Serialization to .json of abstract classes seems to be unsupported, so I have not used polymorphism for the "Asset" type. I have however used it in other parts of the application related to the interface.
 
 ## Future improvements
-Support for removing and modifying assets. Automatic purge after a certain amount of time. Option to mark as broken/missing.
+Lots to be done, supporting users, stats, filtering...
 
 
 
