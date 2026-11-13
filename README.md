@@ -12,7 +12,7 @@ System for tracking assets in different locations
 - JSON
 - Free currency API
 - Entity
-- Spectre console: https://spectreconsole.net/
+- Spectre Console: https://spectreconsole.net/
 ## Installation
 Clone the repository:
 
