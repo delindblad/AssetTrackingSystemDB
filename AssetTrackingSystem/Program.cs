@@ -11,6 +11,12 @@ class Program
     {   
         
         AnsiConsole.MarkupLine("[yellow]Welcome to the Asset Tracker![/]");
+        if (args.Length > 1 && args[1] == "init")
+        {
+            AddStuff();
+            AnsiConsole.WriteLine("Adding sample data...");
+            Environment.Exit(0);
+        }
         string? connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING");
         if (connectionString == null)
         {
@@ -18,12 +24,7 @@ class Program
             Environment.Exit(-1);
         }
 
-        if (args.Length > 1 && args[1] == "init")
-        {
-            AddStuff();
-            AnsiConsole.WriteLine("Adding sample data...");
-            Environment.Exit(0);
-        }
+        
         Run();
 
     }
